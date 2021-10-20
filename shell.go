@@ -2,19 +2,21 @@ package go_utils
 
 import (
 	"fmt"
-	"github.com/ionrock/procs"
+	"os/exec"
 )
 
 //CallCommand
 func CallCommand(cmd string) error {
-	p := procs.NewProcess(cmd)
-	p.OutputHandler = func(line string) string {
-		return line
-	}
-	p.ErrHandler = func(line string) string {
-		return line
-	}
-	return p.Run()
+	res := exec.Command(cmd)
+	return res.Run()
+	// p := procs.NewProcess(cmd)
+	// p.OutputHandler = func(line string) string {
+	// return line
+	// }
+	// p.ErrHandler = func(line string) string {
+	// return line
+	// }
+	// return p.Run()
 }
 
 //go fmt
